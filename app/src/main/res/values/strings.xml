@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">FinalProject</string>
+    <string name="jere_tuppurainen">Jere Tuppurainen</string>
+    <string name="toiminnot">Toiminnot</string>
+    <string name="_7_lis_sovellukseen_splash_screen_jossa_n_kyy_jotain_yleistietoa_sovelluksesta_sek_joku_n_ytt_v_kuva_logo">7. Lisää sovellukseen splash screen, jossa näkyy jotain ”yleistietoa sovelluksesta” sekä joku ”näyttävä” kuva/logo</string>
+    <string name="k_ytt_j_tunnus">Käyttäjätunnus</string>
+    <string name="k_ytt_j_nimi">Käyttäjänimi</string>
+    <string name="k_ytt_tunnus">Käyttätunnus</string>
+    <string name="nimi">Nimi</string>
+    <string name="salasana">Salasana</string>
+    <string name="lis_tieto">Lisätieto</string>
+    <string name="kirjaudu_sis_n">Kirjaudu sisään</string>
+    <string name="rekister_idy">Rekisteröidy</string>
+    <string name="todo">TODO</string>
+    <string name="rekister_inti">Rekisteröinti</string>
+    <string name="k_ytt_j_tunnus2">Käyttäjätunnus</string>
+    <string name="rekister_idy2">Rekisteröidy</string>
+    <string name="nimi2">Nimi</string>
+    <string name="salasana2">Salasana</string>
+    <string name="lis_tieto2">Lisätieto</string>
+    <string name="rekister_idy3">Rekisteröidy</string>
+    <string name="_1_ennen_kuin_asentaja_voi_k_ytt_sovellusta_t_ytyy_h_nen_rekister_ity_saadakseen_k_ytt_j_id_n_ja_salasanan_k_ytt_jist_riitt_tallentaa_k_ytt_j_id_salasana_nimi_ja_lis_tieto_rekister_ityminen_pit_pysty_tekem_n_android_sovelluksella">1. Ennen kuin asentaja voi käyttää sovellusta täytyy hänen rekisteröityä saadakseen käyttäjäid:n ja salasanan. Käyttäjistä riittää tallentaa käyttäjäid, salasana, nimi ja lisätieto. Rekisteröityminen pitää pystyä tekemään Android-sovelluksella.</string>
+    <string name="_2_jos_id_salasana_ovat_oikein_siirryt_n_sovelluksen_p_sivulle_muuten_pysyt_n_login_sivulla_sis_nkirjautuminen_tapahtuu_kutsumalla_serverill_olevaa_palvelua">2. Jos id/salasana ovat oikein, siirrytään sovelluksen pääsivulle, muuten pysytään login-sivulla. Sisäänkirjautuminen tapahtuu kutsumalla serverillä olevaa palvelua.</string>
+    <string name="kirjaudu_ulos">Kirjaudu ulos</string>
+    <string name="_4_k_ytt_j_n_pit_pysty_kirjautumaan_jotenkin_ulos_sovelluksesta_uloskirjauksen_j_lkeen_heitet_n_k_ytt_j_takaisin_login_sivulle_jossa_t_ytyy_kirjautua_uudelleen_jos_haluaa_jatkaa_sovelluksen_k_ytt">4. Käyttäjän pitää pystyä kirjautumaan jotenkin ulos sovelluksesta. Uloskirjauksen jälkeen heitetään käyttäjä takaisin login-sivulle, jossa täytyy kirjautua uudelleen, jos haluaa jatkaa sovelluksen käyttöä.</string>
+    <string name="salasana_toisen_kerran">Salasana toisen kerran</string>
+    <string name="vaihda_salasana">Vaihda Salasana</string>
+    <string name="vanha_salasana">Vanha salasana</string>
+    <string name="uusi_salasana">Uusi salasana</string>
+    <string name="_3_k_ytt_j_n_on_annettava_vanha_salasana_ja_uusi_salasana_kaksi_kertaa_salasanan_vaihtaminen_tapahtuu_kutsumalla_serverill_olevaa_palvelua">3. Käyttäjän on annettava vanha salasana ja uusi salasana (kaksi kertaa). Salasanan vaihtaminen tapahtuu kutsumalla serverillä olevaa palvelua.</string>
+    <string name="_5_p_sivulla_n_ytet_n_oletuksena_asentajan_kaikki_uudet_ty_t_kullakin_ty_ll_on_seuraavat_ominaisuudet_ty_n_id_merkkijono_ty_n_kuvaus_pvm_jolloin_ty_pit_isi_olla_valmiina_tila_mahdolliset_arvot_ovat_uusi_ty_t_ei_ole_viel_aloitettu_aloitettu_asentaja_merkkaa_ty_n_aloitetuksi_kun_h_n_ottaa_ty_n_k_sittelyyn_valmis_asentaja_kuittaa_tehdyn_ty_n_valmiiksi">5. Pääsivulla näytetään oletuksena asentajan kaikki UUDET työt. Kullakin työllä on seuraavat ominaisuudet: Työn id (merkkijono) Työn kuvaus Pvm, jolloin työ pitäisi olla valmiina Tila, mahdolliset arvot ovat UUSI (työtä ei ole vielä aloitettu) ALOITETTU (asentaja merkkaa työn aloitetuksi, kun hän ottaa työn käsittelyyn) VALMIS (asentaja kuittaa tehdyn työn valmiiksi)</string>
+    <string name="_14_serverin_p_ss_t_ytyy_olla_toiminto_jolla_voidaan_alustaa_asentajan_ty_t_ts_testaamista_varten_on_olemassa_palvelu_joka_lis_asentajalle_muutamia_kovakoodattuja_t_it_ja_poistaa_kaikki_aiemmat_asentajan_ty_t">14. Serverin päässä täytyy olla toiminto, jolla voidaan ”alustaa” asentajan työt. Ts. testaamista varten on olemassa palvelu, joka lisää asentajalle muutamia kovakoodattuja töitä (ja poistaa kaikki aiemmat asentajan työt).</string>
+    <string name="ty_n_selite">Työn selite</string>
+    <string name="tehdyt_tunnit">Tehdyt tunnit</string>
+    <string name="suoritteet">Suoritteet</string>
+    <string name="merkkaa_ty_valmiiksi">Merkkaa työ valmiiksi</string>
+    <string name="p_sivulle">Pääsivulle</string>
+    <string name="m_r">Määrä</string>
+    <string name="uudet_ty_t">Uudet työt</string>
+    <string name="aloitetut_ty_t">Aloitetut työt</string>
+    <string name="valmiit_ty_t">Valmiit työt</string>
+    <string name="valitse_kuva">Valitse kuva</string>
+    <string name="liit_kuva_ty_h_n">Liitä kuva työhön</string>
+    <string name="avaa_kamera">Avaa kamera</string>
+
+
+</resources>

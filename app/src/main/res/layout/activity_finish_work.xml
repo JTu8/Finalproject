@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FinishWork">
+
+    <EditText
+        android:id="@+id/tbSelite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/ty_n_selite"/>
+
+    <EditText
+        android:id="@+id/tbTehdytTunnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tbSelite"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/tehdyt_tunnit"/>
+
+    <CheckBox
+        android:id="@+id/checkBoxSuorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tbTehdytTunnit"
+        android:text="@string/suoritteet" />
+
+    <Spinner
+        android:id="@+id/spinnerSuoriteryhma"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/checkBoxSuorite" />
+
+    <Button
+        android:id="@+id/btnFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:text="@string/merkkaa_ty_valmiiksi" />
+
+    <Spinner
+        android:id="@+id/spinnerSuoritteet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinnerSuoriteryhma" />
+
+    <Spinner
+        android:id="@+id/spinnerYksikko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinnerSuoritteet" />
+
+    <EditText
+        android:id="@+id/editTextMaara"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/spinnerYksikko"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/m_r"/>
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="199dp"
+        app:srcCompat="@drawable/common_full_open_on_phone" />
+
+    <Button
+        android:id="@+id/btnOpenCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_above="@+id/btnSendToServer"
+        android:layout_centerHorizontal="true"
+        android:text="@string/avaa_kamera" />
+
+    <Button
+        android:id="@+id/btnSendToServer"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_above="@+id/btnFinish"
+        android:layout_centerHorizontal="true"
+        android:text="@string/liit_kuva_ty_h_n" />
+</RelativeLayout>

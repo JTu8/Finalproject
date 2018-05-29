@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/tbUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/k_ytt_tunnus"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/tbName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tbUserName"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/nimi"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/tbPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tbName"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="@string/salasana"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/tbInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tbPassword"
+        android:layout_below="@+id/tbPassword"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/lis_tieto"
+        tools:ignore="LabelFor" />
+
+</RelativeLayout>

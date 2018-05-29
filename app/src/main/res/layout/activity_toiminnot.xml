@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.htmjs.finalproject.Toiminnot">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="7. Lisää sovellukseen splash screen, jossa näkyy jotain ”yleistietoa sovelluksesta” sekä joku ”näyttävä” kuva/logo "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:text="@string/_1_ennen_kuin_asentaja_voi_k_ytt_sovellusta_t_ytyy_h_nen_rekister_ity_saadakseen_k_ytt_j_id_n_ja_salasanan_k_ytt_jist_riitt_tallentaa_k_ytt_j_id_salasana_nimi_ja_lis_tieto_rekister_ityminen_pit_pysty_tekem_n_android_sovelluksella"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView4"
+        android:text="@string/_2_jos_id_salasana_ovat_oikein_siirryt_n_sovelluksen_p_sivulle_muuten_pysyt_n_login_sivulla_sis_nkirjautuminen_tapahtuu_kutsumalla_serverill_olevaa_palvelua"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="139dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView5"
+        android:text="@string/_4_k_ytt_j_n_pit_pysty_kirjautumaan_jotenkin_ulos_sovelluksesta_uloskirjauksen_j_lkeen_heitet_n_k_ytt_j_takaisin_login_sivulle_jossa_t_ytyy_kirjautua_uudelleen_jos_haluaa_jatkaa_sovelluksen_k_ytt" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView6"
+        android:text="@string/_3_k_ytt_j_n_on_annettava_vanha_salasana_ja_uusi_salasana_kaksi_kertaa_salasanan_vaihtaminen_tapahtuu_kutsumalla_serverill_olevaa_palvelua" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView7"
+        android:text="@string/_5_p_sivulla_n_ytet_n_oletuksena_asentajan_kaikki_uudet_ty_t_kullakin_ty_ll_on_seuraavat_ominaisuudet_ty_n_id_merkkijono_ty_n_kuvaus_pvm_jolloin_ty_pit_isi_olla_valmiina_tila_mahdolliset_arvot_ovat_uusi_ty_t_ei_ole_viel_aloitettu_aloitettu_asentaja_merkkaa_ty_n_aloitetuksi_kun_h_n_ottaa_ty_n_k_sittelyyn_valmis_asentaja_kuittaa_tehdyn_ty_n_valmiiksi" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView9"
+        android:text="6. Pääsivulta valitaan työ ja merkataan se jotenkin aloitetuksi (tilaksi siis päivittyy ALOITETTU). VAIN uuden työn (tila UUSI) voi aloittaa.  " />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="108dp"
+        android:text="Seuraava sivu ->" />
+</RelativeLayout>
