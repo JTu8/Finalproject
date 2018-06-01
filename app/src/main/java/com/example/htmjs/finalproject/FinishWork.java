@@ -61,11 +61,14 @@ public class FinishWork extends AppCompatActivity {
     private Spinner yksikko;
     private EditText maara;
     private static String TAG_tyoID = "tyo_ID";
+    private static String TAG_kayttajatunnus = "kayttajatunnus";
+    private String tunnus;
     //String tyo_ID;
     private ArrayList<SuoriteRyhma> _suoriteRyhma;
     private ArrayList<Suoritteet> _suoritteet;
     private SuoriteAdapter adapter;
     private SuoritteetAdapter suoritteetAdapter;
+    private YksikotAdapter yksikotAdapter;
     private static final String finishWorkUrl = "http://192.168.56.1/jerephp/Mobiiliohjelmointi/finish_work.php";
 
     Button finish;
@@ -90,26 +93,15 @@ public class FinishWork extends AppCompatActivity {
         Intent intent = getIntent();
         final String tyo_ID = intent.getStringExtra(TAG_tyoID);
 
+        Intent kayttaja = getIntent();
+        tunnus = kayttaja.getStringExtra(TAG_kayttajatunnus);
+
         selite = findViewById(R.id.tbSelite);
         tunnit = findViewById(R.id.tbTehdytTunnit);
 
         finish = findViewById(R.id.btnFinish);
 
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String sel = selite.getText().toString().trim();
-                String hours = tunnit.getText().toString().trim();
 
-                if(!sel.isEmpty() && !hours.isEmpty()) {
-                    updateWorks(tyo_ID, sel, hours);
-                    Toast.makeText(getApplicationContext(), "Työ merkattu valmiiksi", Toast.LENGTH_LONG).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "Tunnit tai selitys puuttuvat", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
         _suoriteRyhma = new ArrayList<SuoriteRyhma>();
         _suoritteet = new ArrayList<Suoritteet>();
@@ -136,6 +128,9 @@ public class FinishWork extends AppCompatActivity {
                     maara.setVisibility(View.VISIBLE);
                     getSuoriteRyhmat();
 
+
+
+
                 }
                 else {
                     suoriteryhma.setVisibility(View.INVISIBLE);
@@ -146,20 +141,24 @@ public class FinishWork extends AppCompatActivity {
             }
         });
 
-        uploadImage = findViewById(R.id.btnSendToServer);
-        imageView = findViewById(R.id.imgView);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+
+        finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showFileChooser();
-            }
-        });
+                String sel = selite.getText().toString().trim();
+                String hours = tunnit.getText().toString().trim();
+                String value = maara.getText().toString().trim();
+                updateMaara(tyo_ID, value);
 
-        uploadImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                uploadImage(tyo_ID);
+                if(!sel.isEmpty() && !hours.isEmpty()) {
+                    updateWorks(tyo_ID, sel, hours);
+
+                    Toast.makeText(getApplicationContext(), "Työ merkattu valmiiksi", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Tunnit tai selitys puuttuvat", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -177,8 +176,10 @@ public class FinishWork extends AppCompatActivity {
         openCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_PIC_REQUEST);
+                Intent intent = new Intent(FinishWork.this, MainPage.class);
+                intent.putExtra(TAG_kayttajatunnus, tunnus);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -235,7 +236,6 @@ public class FinishWork extends AppCompatActivity {
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-
                         _suoriteRyhma.add(new SuoriteRyhma(
                                 object.getString("workgroup_name")
                         ));
@@ -272,13 +272,40 @@ public class FinishWork extends AppCompatActivity {
 
     }
 
-    public void updateSuoritteet() {
+    public void updateMaara(final String tyo_ID, final String _maara) {
 
+        final String updateMaaraUrl = "http://192.168.56.1/jerephp/Mobiiliohjelmointi/update_maara.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, updateMaaraUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("Määrän lisääminen", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Määrän lisääminen", "Error: " + error.getMessage());
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("tyo_ID", tyo_ID);
+                params.put("maara", _maara);
+                return params;
+            }
+        };
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 
     public void getSuoritteet(final String _suoriteRyhma) {
 
         final String suorittetUrl = "http://192.168.56.1/jerephp/Mobiiliohjelmointi/get_suoritteet.php?workgroup_name=" + _suoriteRyhma;
+
+        Intent intent = getIntent();
+        final String tyo_ID = intent.getStringExtra(TAG_tyoID);
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, suorittetUrl, new Response.Listener<String>() {
             @Override
@@ -295,7 +322,6 @@ public class FinishWork extends AppCompatActivity {
                                 object.getInt("ID"),
                                 object.getString("suorite"),
                                 object.getString("yksikko"),
-                                object.getInt("maara"),
                                 object.getString("workgroup_name"),
                                 object.getString("tyo_ID")
 
@@ -308,7 +334,8 @@ public class FinishWork extends AppCompatActivity {
                     suoritteet.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
+                            int suoriteID = _suoritteet.get(i).getID();
+                            addSuorite(tyo_ID, suoriteID);
                         }
 
                         @Override
@@ -316,6 +343,8 @@ public class FinishWork extends AppCompatActivity {
 
                         }
                     });
+                    yksikotAdapter = new YksikotAdapter(FinishWork.this, _suoritteet);
+                    yksikko.setAdapter(yksikotAdapter);
                 } catch (JSONException ex) {
                     ex.printStackTrace();
                     ex.getMessage();
@@ -328,6 +357,34 @@ public class FinishWork extends AppCompatActivity {
             }
         }
         );
+
+        Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    public void addSuorite(final String tyo_ID, final int suoriteID) {
+
+        final String addSuoriteUrl = "http://192.168.56.1/jerephp/Mobiiliohjelmointi/add_suorite_to_work.php";
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, addSuoriteUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("Suorite ID:n lisääminen", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Suorite ID:n lisääminen: ", "Error: " + error.getMessage());
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("tyo_ID", tyo_ID);
+                params.put("suorite_ID", String.valueOf(suoriteID));
+                return params;
+            }
+        };
 
         Volley.newRequestQueue(this).add(stringRequest);
     }

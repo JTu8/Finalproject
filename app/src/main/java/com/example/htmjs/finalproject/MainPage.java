@@ -150,7 +150,9 @@ public class MainPage extends AppCompatActivity {
                                 "Työn tila: " + object.getString("tila"),
                                 object.getString("kayttajatunnus"),
                                 object.getString("selitys"),
-                                object.getString("tunnit")
+                                object.getString("tunnit"),
+                                object.getString("maara")
+
                         ));
                     }
                     worksAdapter = new WorksAdapter(MainPage.this, _works);

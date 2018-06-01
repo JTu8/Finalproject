@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class FinishedWorksAdapter extends BaseAdapter {
+public class WorksFinishedAdapter extends BaseAdapter {
 
-    private ArrayList<Works> listWorks;
+    private ArrayList<WorksFinished> listWorks;
     private Context context;
     private LayoutInflater layoutInflater;
 
-    public FinishedWorksAdapter(Context _context, ArrayList<Works> _works) {
+    public WorksFinishedAdapter(Context _context, ArrayList<WorksFinished> _works) {
         super();
         context = _context;
         listWorks = _works;
@@ -42,8 +42,8 @@ public class FinishedWorksAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        view = layoutInflater.inflate(R.layout.data_finished_works_row, null);
-        Works w = listWorks.get(i);
+        view = layoutInflater.inflate(R.layout.data_finished_works_suoritteet_row, null);
+        WorksFinished w = listWorks.get(i);
 
         TextView tyoID = view.findViewById(R.id.tvTYOID);
         tyoID.setText(w.getTyo_ID());
@@ -63,7 +63,14 @@ public class FinishedWorksAdapter extends BaseAdapter {
         TextView tunnit = view.findViewById(R.id.tvTunnit);
         tunnit.setText(w.getTunnit());
 
+        TextView maara = view.findViewById(R.id.tvMaara);
+        maara.setText(w.getMaara());
 
+        TextView suorite = view.findViewById(R.id.tvSuorite);
+        suorite.setText(w.getSuorite());
+
+        TextView yksikko = view.findViewById(R.id.tvYksikko);
+        yksikko.setText(w.getYksikko());
 
 
         return view;

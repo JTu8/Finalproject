@@ -24,11 +24,15 @@ import java.util.ArrayList;
 public class FinishedWorks extends AppCompatActivity {
 
     private ArrayList<Works> _works;
+    private ArrayList<WorksFinished> _finishedWorks;
     private FinishedWorksAdapter adapter;
+    private WorksFinishedAdapter worksFinishedAdapter;
     private ListView lv;
+    private ListView listView;
     private static String TAG_kayttajatunnus = "kayttajatunnus";
     private static String TAG_tyoID = "tyo_ID";
     String tunnus;
+    String tyo_ID;
 
     Button toMainPage;
 
@@ -41,9 +45,12 @@ public class FinishedWorks extends AppCompatActivity {
         tunnus = intent.getStringExtra(TAG_kayttajatunnus);
 
         _works = new ArrayList<Works>();
+        _finishedWorks = new ArrayList<WorksFinished>();
         lv = findViewById(R.id.lvFinishedWorks);
+        listView = findViewById(R.id.lvFinishedWorks2);
 
-        getFinishedWorks();
+        //getFinishedWorks();
+        getFinishedWorksWithSuoritteet();
 
         toMainPage = findViewById(R.id.btnToMainPage);
 
@@ -85,7 +92,9 @@ public class FinishedWorks extends AppCompatActivity {
                                 "Työn tila: " + object.getString("tila"),
                                 object.getString("kayttajatunnus"),
                                 "Työn selitys: " + object.getString("selitys"),
-                                "Tehdyt tunnit: " + object.getString("tunnit")
+                                "Tehdyt tunnit: " + object.getString("tunnit"),
+                                "Suoritteiden määrä: " + object.getString("maara")
+
                         ));
 
 
@@ -102,6 +111,60 @@ public class FinishedWorks extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("Hae työt", "Error: " + error.getMessage());
+            }
+        }
+        );
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+
+    }
+
+    public void getFinishedWorksWithSuoritteet() {
+
+        Intent intent = getIntent();
+        tunnus = intent.getStringExtra(TAG_kayttajatunnus);
+
+        Intent tyo = getIntent();
+        tyo_ID = tyo.getStringExtra(TAG_tyoID);
+
+        final String finishedWorksSuoriteUrl = "http://192.168.56.1/jerephp/Mobiiliohjelmointi/get_finished_works_with_suoritteet.php?kayttajatunnus=" + tunnus;
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, finishedWorksSuoriteUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("Hae valmiit työt", response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("works");
+
+                    for(int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject object = jsonArray.getJSONObject(i);
+
+                        _finishedWorks.add(new WorksFinished(
+                                object.getInt("ID"),
+                                object.getString("tyo_ID"),
+                                "Kuvaus: " + object.getString("kuvaus"),
+                                "Valmistumispäivämäärä: " + object.getString("pvm"),
+                                "Työn tila: " + object.getString("tila"),
+                                "Työn selitys: " + object.getString("selitys"),
+                                "Tehdyt tunnit: " + object.getString("tunnit"),
+                                "Suoritteiden määrä: " + object.getString("maara"),
+                                "Suorite: " + object.getString("suorite"),
+                                "Yksikkö: " + object.getString("yksikko")
+                        ));
+                    }
+                    worksFinishedAdapter = new WorksFinishedAdapter(FinishedWorks.this, _finishedWorks);
+                    listView.setAdapter(worksFinishedAdapter);
+                } catch (JSONException ex) {
+                    ex.getMessage();
+                    ex.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Hae valmiit työt", "Error: " + error.getMessage());
             }
         }
         );

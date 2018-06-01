@@ -87,7 +87,9 @@ public class StartedWorks extends AppCompatActivity {
                                 "Työn tila: " + object.getString("tila"),
                                 object.getString("kayttajatunnus"),
                                 object.getString("selitys"),
-                                object.getString("tunnit")
+                                object.getString("tunnit"),
+                                object.getString("maara")
+
                         ));
 
 
@@ -116,6 +118,7 @@ public class StartedWorks extends AppCompatActivity {
                 String tyo_ID = _works.get(i).getTyo_ID();
                 Intent intent = new Intent(StartedWorks.this, FinishWork.class);
                 intent.putExtra(TAG_tyoID, tyo_ID);
+                intent.putExtra(TAG_kayttajatunnus, tunnus);
                 startActivity(intent);
                 finish();
             }

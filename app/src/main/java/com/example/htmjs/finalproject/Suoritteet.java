@@ -5,16 +5,14 @@ public class Suoritteet {
     private int ID;
     private String suorite;
     private String yksikko;
-    private int maara;
     private String suoriteryhma;
     private String tyo_ID;
 
 
-    public Suoritteet(int _id, String _suorite, String _yksikko, int _maara, String _suoriteryhma, String _tyoID) {
+    public Suoritteet(int _id, String _suorite, String _yksikko, String _suoriteryhma, String _tyoID) {
         this.ID = _id;
         this.suorite = _suorite;
         this.yksikko = _yksikko;
-        this.maara = _maara;
         this.suoriteryhma = _suoriteryhma;
         this.tyo_ID = _tyoID;
 
@@ -50,14 +48,6 @@ public class Suoritteet {
 
     public void setYksikko(String yksikko) {
         this.yksikko = yksikko;
-    }
-
-    public int getMaara() {
-        return maara;
-    }
-
-    public void setMaara(int maara) {
-        this.maara = maara;
     }
 
     public String getTyo_ID() {

@@ -10,21 +10,19 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SuoriteAdapter extends BaseAdapter {
+public class YksikotAdapter extends BaseAdapter {
 
-    private ArrayList<SuoriteRyhma> listSuoritteet;
+    private ArrayList<Suoritteet> listSuoritteet;
     private Context context;
     private LayoutInflater layoutInflater;
-    private int hidingItemIndex;
 
-    public SuoriteAdapter(Context _context, ArrayList<SuoriteRyhma> _suoritteet) {
+    public YksikotAdapter(Context _context, ArrayList<Suoritteet> _suoritteet) {
         super();
         context = _context;
         listSuoritteet = _suoritteet;
 
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
-
 
     @Override
     public int getCount() {
@@ -41,18 +39,15 @@ public class SuoriteAdapter extends BaseAdapter {
         return i;
     }
 
-    @SuppressLint({"InflateParams", "ViewHolder"})
+    @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        view = layoutInflater.inflate(R.layout.data_suorite_row, null);
-        SuoriteRyhma sr = listSuoritteet.get(i);
+        view = layoutInflater.inflate(R.layout.data_yksikot_row, null);
+        Suoritteet s = listSuoritteet.get(i);
 
-        TextView suoriteRyhma = view.findViewById(R.id.textViewRyhma1);
-        suoriteRyhma.setText(sr.getWorkgroup_name());
-
-
-
+        TextView yksikko = view.findViewById(R.id.tvYksikko);
+        yksikko.setText(s.getYksikko());
 
         return view;
     }

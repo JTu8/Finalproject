@@ -72,28 +72,13 @@
         android:inputType="textPersonName"
         android:hint="@string/m_r"/>
 
-    <ImageView
-        android:id="@+id/imgView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="199dp"
-        app:srcCompat="@drawable/common_full_open_on_phone" />
-
     <Button
         android:id="@+id/btnOpenCamera"
         android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_above="@+id/btnSendToServer"
+        android:layout_height="38dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/avaa_kamera" />
+        android:layout_marginBottom="72dp"
+        android:text="Pääsivulle" />
 
-    <Button
-        android:id="@+id/btnSendToServer"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_above="@+id/btnFinish"
-        android:layout_centerHorizontal="true"
-        android:text="@string/liit_kuva_ty_h_n" />
 </RelativeLayout>

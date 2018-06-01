@@ -1,13 +1,12 @@
 package com.example.htmjs.finalproject;
 
-public class Works {
+public class WorksFinished {
 
     private int ID;
     private String tyo_ID;
     private String kuvaus;
     private String pvm;
     private String tila;
-    private String userID;
     private String selitys;
     private String tunnit;
     private String maara;
@@ -16,17 +15,18 @@ public class Works {
 
 
 
-    public Works(int _id, String _tyo_ID, String _kuvaus, String _pvm, String _tila, String _userID, String _selitys, String _tunnit, String _maara) {
+    public WorksFinished(int _id, String _tyo_ID, String _kuvaus, String _pvm, String _tila, String _selitys, String _tunnit, String _maara, String _suorite, String _yksikko) {
 
         this.ID = _id;
         this.tyo_ID = _tyo_ID;
         this.kuvaus = _kuvaus;
         this.pvm = _pvm;
         this.tila = _tila;
-        this.userID = _userID;
         this.selitys = _selitys;
         this.tunnit = _tunnit;
         this.maara = _maara;
+        this.suorite = _suorite;
+        this.yksikko = _yksikko;
     }
 
     public String getSelitys() {
@@ -43,14 +43,6 @@ public class Works {
 
     public void setTunnit(String tunnit) {
         this.tunnit = tunnit;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
     public int getID() {
